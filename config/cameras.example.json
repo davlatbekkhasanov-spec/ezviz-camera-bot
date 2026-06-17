@@ -1,0 +1,15 @@
+{
+  "default": "sklad3",
+  "zones": {
+    "sklad3": {
+      "label": "Sklad-3 (C1C)",
+      "deviceSerial": "BA3648571",
+      "channelNo": 1
+    },
+    "sklad_h6c": {
+      "label": "Sklad H6c",
+      "deviceSerial": "DEVICE_SERIAL_BU_YERGA",
+      "channelNo": 1
+    }
+  }
+}

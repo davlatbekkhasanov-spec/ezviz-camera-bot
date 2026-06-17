@@ -1,0 +1,13 @@
+{
+  "name": "ezviz-camera-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "test-snapshot": "node scripts/test-snapshot.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

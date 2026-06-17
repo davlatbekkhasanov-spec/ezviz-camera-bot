@@ -1,0 +1,10 @@
+{
+  "default": "sklad3",
+  "zones": {
+    "sklad3": {
+      "label": "Sklad-3 (C1C)",
+      "deviceSerial": "BA3648571",
+      "channelNo": 1
+    }
+  }
+}
