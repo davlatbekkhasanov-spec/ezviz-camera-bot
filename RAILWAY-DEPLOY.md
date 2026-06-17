@@ -13,6 +13,8 @@ Alohida bot. Face ID / yordamchi ichiga qo'shilmagan.
 
 Repo: `davlatbekkhasanov-spec/ezviz-camera-bot`
 
+**Live:** https://ezviz-camera-bot-production.up.railway.app/health
+
 ## 3. Railway env
 
 | O'zgaruvchi | Qiymat |

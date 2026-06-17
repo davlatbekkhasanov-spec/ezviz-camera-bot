@@ -12,6 +12,7 @@ jobs:
       - name: Install Railway CLI
         run: npm i -g @railway/cli
       - name: Deploy
-        run: railway up --service ezviz-camera-bot
+        run: node scripts/railway-deploy.mjs
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
