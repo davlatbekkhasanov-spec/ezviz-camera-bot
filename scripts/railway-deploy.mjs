@@ -136,6 +136,8 @@ async function main() {
   if ((process.env.EZVIZ_APP_SECRET || "").trim()) {
     vars.EZVIZ_APP_SECRET = process.env.EZVIZ_APP_SECRET.trim();
   }
+  vars.EZVIZ_API_BASE =
+    (process.env.EZVIZ_API_BASE || "https://isgpopen.ezvizlife.com/api/lapp").trim();
 
   await upsertVariables({ projectId, environmentId, serviceId, variables: vars });
   console.log("Env yangilandi");

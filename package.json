@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node index.mjs",
+    "start": "node start.mjs",
     "test-snapshot": "node scripts/test-snapshot.mjs"
   },
   "engines": {
