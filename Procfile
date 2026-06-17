@@ -1,1 +1,1 @@
-web: node index.mjs
+web: node start.mjs
