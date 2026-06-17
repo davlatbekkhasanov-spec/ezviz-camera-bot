@@ -128,8 +128,15 @@ async function main() {
     BRIDGE_SECRET,
     TZ: "Asia/Tashkent",
     CAMERAS_JSON: "config/cameras.json",
-    VISION_ENABLED: "0",
+    VISION_ENABLED: "1",
+    MASTER_NAME: (process.env.MASTER_NAME || "Davlat aka").trim(),
+    MASTER_CHAT_ID: (process.env.MASTER_CHAT_ID || ADMIN_IDS).trim(),
+    TTS_VOICE: (process.env.TTS_VOICE || "nova").trim(),
+    DATA_DIR: "/app/data",
   };
+  if ((process.env.OPENAI_API_KEY || "").trim()) {
+    vars.OPENAI_API_KEY = process.env.OPENAI_API_KEY.trim();
+  }
   if ((process.env.EZVIZ_APP_KEY || "").trim()) {
     vars.EZVIZ_APP_KEY = process.env.EZVIZ_APP_KEY.trim();
   }
