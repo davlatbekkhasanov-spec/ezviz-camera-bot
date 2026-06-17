@@ -70,10 +70,10 @@ async function upsertVariables({ projectId, environmentId, serviceId, variables 
 }
 
 async function deploy({ environmentId, serviceId }) {
-  const q = `mutation($environmentId: String!, $serviceId: String!) {
-    serviceInstanceDeployV2(environmentId: $environmentId, serviceId: $serviceId)
+  const q = `mutation($serviceId: String!, $environmentId: String!, $latestCommit: Boolean) {
+    serviceInstanceDeploy(serviceId: $serviceId, environmentId: $environmentId, latestCommit: $latestCommit)
   }`;
-  await gql(q, { environmentId, serviceId });
+  await gql(q, { environmentId, serviceId, latestCommit: true });
 }
 
 async function generateDomain({ environmentId, serviceId }) {
