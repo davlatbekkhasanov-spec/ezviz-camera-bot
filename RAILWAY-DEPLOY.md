@@ -17,12 +17,12 @@ Repo: `davlatbekkhasanov-spec/ezviz-camera-bot`
 
 | O'zgaruvchi | Qiymat |
 |-------------|--------|
-| `BOT_TOKEN` | Yangi bot (BotFather) |
+| `BOT_TOKEN` | `@qora_koz_bot` token (Railway Secrets — repoga yozmang) |
 | `ADMIN_IDS` | `1432810519` |
 | `NOTIFY_CHAT_ID` | Xabarlar qayerga |
 | `EZVIZ_APP_KEY` | Open Platform |
 | `EZVIZ_APP_SECRET` | Open Platform |
-| `BRIDGE_SECRET` | Kuchli kalit |
+| `BRIDGE_SECRET` | `dalion_ezviz_2026_kuchli_kalit` (yoki o'zingizniki) |
 | `TZ` | `Asia/Tashkent` |
 
 ## 4. Face ID ulanish (ixtiyoriy)

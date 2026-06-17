@@ -23,10 +23,10 @@ if (fs.existsSync(envPath)) {
 const PORT = Number(process.env.PORT || 8080);
 const SECRET = (process.env.BRIDGE_SECRET || "").trim();
 const cameraCfg = loadCameras();
+const cloudReady = ezvizCloudConfigured();
 
-if (!ezvizCloudConfigured()) {
-  console.error("EZVIZ_APP_KEY va EZVIZ_APP_SECRET kerak (open.ys7.com)");
-  process.exit(1);
+if (!cloudReady) {
+  console.warn("EZVIZ_APP_KEY/SECRET yo'q — /snap ishlamaydi, bot kutmoqda");
 }
 
 function authOk(req) {
@@ -57,7 +57,7 @@ const server = http.createServer(async (req, res) => {
     return send(200, {
       ok: true,
       service: "ezviz-camera-bot",
-      cloud: ezvizCloudConfigured(),
+      cloud: cloudReady,
       cameras: zones.length,
       vision: process.env.VISION_ENABLED === "1",
     });
