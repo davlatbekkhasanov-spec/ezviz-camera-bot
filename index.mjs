@@ -10,6 +10,7 @@ import { loadCameras } from "./lib/cameras.mjs";
 import { ezvizCloudConfigured } from "./lib/ezviz-cloud.mjs";
 import { handleFaceEvent } from "./lib/handle-event.mjs";
 import { startTelegramBot } from "./lib/telegram-bot.mjs";
+import { startCloudWatch } from "./lib/cloud-watch.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const envPath = path.join(__dirname, ".env");
@@ -108,4 +109,5 @@ server.listen(PORT, () => {
   const zones = Object.keys(cameraCfg.zones).join(", ") || "—";
   console.log(`ezviz-camera-bot :${PORT} · zonalar: ${zones}`);
   startTelegramBot(cameraCfg);
+  startCloudWatch();
 });

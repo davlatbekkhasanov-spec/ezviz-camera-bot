@@ -1,0 +1,12 @@
+{
+  "description": "24/7 bulut kuzatuv — EZVIZ snapshot (RTSP shart emas)",
+  "cameras": [
+    {
+      "deviceSerial": "BA3648571",
+      "channelNo": 1,
+      "zone": "sklad3",
+      "label": "Sklad-3 (C1C)",
+      "pilot": true
+    }
+  ]
+}
