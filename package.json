@@ -8,6 +8,6 @@
     "test-snapshot": "node scripts/test-snapshot.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

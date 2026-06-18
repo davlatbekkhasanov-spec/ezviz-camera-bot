@@ -133,6 +133,10 @@ async function main() {
     MASTER_CHAT_ID: (process.env.MASTER_CHAT_ID || ADMIN_IDS).trim(),
     TTS_VOICE: (process.env.TTS_VOICE || "nova").trim(),
     DATA_DIR: "/app/data",
+    EVENT_API_PORT: "8788",
+    EVENT_API_URL: "http://127.0.0.1:8788",
+    EVENT_API_AUTO_MIGRATE: "1",
+    EVENT_API_SECRET: BRIDGE_SECRET,
   };
   if ((process.env.OPENAI_API_KEY || "").trim()) {
     vars.OPENAI_API_KEY = process.env.OPENAI_API_KEY.trim();

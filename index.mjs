@@ -60,6 +60,8 @@ const server = http.createServer(async (req, res) => {
       cloud: cloudReady,
       cameras: zones.length,
       vision: process.env.VISION_ENABLED === "1",
+      eventApi: Boolean(process.env.EVENT_API_URL),
+      journalDb: true,
     });
   }
 
