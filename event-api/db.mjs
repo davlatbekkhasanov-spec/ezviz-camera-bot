@@ -187,8 +187,12 @@ export function formatSummaryText(summary) {
 
 export function searchPersonEvents({ dayKey: dk, zone = "", who = "", type = "", limit = 100 }) {
   const d = getDb();
-  const clauses = ["day_key = @dk"];
-  const params = { dk, limit };
+  const clauses = [];
+  const params = { limit };
+  if (dk) {
+    clauses.push("day_key = @dk");
+    params.dk = dk;
+  }
   if (zone) {
     clauses.push("zone = @zone");
     params.zone = zone;
@@ -201,10 +205,11 @@ export function searchPersonEvents({ dayKey: dk, zone = "", who = "", type = "",
     clauses.push("type = @type");
     params.type = type;
   }
+  const where = clauses.length ? clauses.join(" AND ") : "1=1";
   return d
     .prepare(
       `SELECT id, at, type, who, zone, source, camera_id, note, confidence
-       FROM person_events WHERE ${clauses.join(" AND ")}
+       FROM person_events WHERE ${where}
        ORDER BY at DESC LIMIT @limit`
     )
     .all(params);

@@ -118,13 +118,14 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === "GET" && url.pathname === "/events/search") {
-    const dk = url.searchParams.get("day") || dayKey();
+    const dayParam = url.searchParams.get("day");
+    const dk = dayParam === null ? "" : dayParam;
     const zone = url.searchParams.get("zone") || "";
     const who = url.searchParams.get("who") || "";
     const type = url.searchParams.get("type") || "";
     const limit = Number(url.searchParams.get("limit") || 100);
     const events = searchPersonEvents({ dayKey: dk, zone, who, type, limit });
-    return send(res, 200, { ok: true, day: dk, events });
+    return send(res, 200, { ok: true, day: dk || null, events });
   }
 
   if (req.method === "GET" && url.pathname === "/clips/search") {
