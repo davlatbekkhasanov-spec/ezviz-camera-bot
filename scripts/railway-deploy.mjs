@@ -89,8 +89,9 @@ async function generateDomain({ environmentId, serviceId }) {
 }
 
 async function main() {
-  if (!BOT_TOKEN) {
-    throw new Error("BOT_TOKEN yo'q (deploy uchun env da bering)");
+  const deployOnly = process.argv.includes("--deploy-only");
+  if (!deployOnly && !BOT_TOKEN) {
+    throw new Error("BOT_TOKEN yo'q (deploy uchun env da bering yoki --deploy-only)");
   }
 
   try {
@@ -155,8 +156,12 @@ async function main() {
   vars.EZVIZ_API_BASE =
     (process.env.EZVIZ_API_BASE || "https://isgpopen.ezvizlife.com/api/lapp").trim();
 
-  await upsertVariables({ projectId, environmentId, serviceId, variables: vars });
-  console.log("Env yangilandi");
+  if (!deployOnly) {
+    await upsertVariables({ projectId, environmentId, serviceId, variables: vars });
+    console.log("Env yangilandi");
+  } else {
+    console.log("Deploy-only: env o'zgartirilmadi");
+  }
 
   await deploy({ environmentId, serviceId });
   console.log("Deploy boshlandi");

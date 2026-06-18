@@ -58,6 +58,7 @@ const server = http.createServer(async (req, res) => {
     return send(200, {
       ok: true,
       service: "ezviz-camera-bot",
+      build: (process.env.RAILWAY_GIT_COMMIT_SHA || process.env.BUILD_SHA || "unknown").slice(0, 7),
       cloud: cloudReady,
       cameras: zones.length,
       vision: process.env.VISION_ENABLED === "1",
