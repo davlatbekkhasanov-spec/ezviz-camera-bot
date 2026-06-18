@@ -215,6 +215,23 @@ export function searchPersonEvents({ dayKey: dk, zone = "", who = "", type = "",
     .all(params);
 }
 
+export function searchFaceMatches({ who = "", limit = 50 }) {
+  const d = getDb();
+  const params = { limit };
+  let where = "1=1";
+  if (who) {
+    where = "staff_name LIKE @who";
+    params.who = `%${who}%`;
+  }
+  return d
+    .prepare(
+      `SELECT id, at, staff_key, staff_name, camera_id, zone, confidence, clip_path, source
+       FROM face_matches WHERE ${where}
+       ORDER BY at DESC LIMIT @limit`
+    )
+    .all(params);
+}
+
 export function searchClips({ dayKey: dk, zone = "", cameraId = "", limit = 20 }) {
   const d = getDb();
   const clauses = ["day_key = @dk"];

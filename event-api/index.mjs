@@ -13,6 +13,7 @@ import {
   migrateFromJsonJournal,
   queryDaySummary,
   searchClips,
+  searchFaceMatches,
   searchPersonEvents,
 } from "./db.mjs";
 
@@ -126,6 +127,13 @@ const server = http.createServer(async (req, res) => {
     const limit = Number(url.searchParams.get("limit") || 100);
     const events = searchPersonEvents({ dayKey: dk, zone, who, type, limit });
     return send(res, 200, { ok: true, day: dk || null, events });
+  }
+
+  if (req.method === "GET" && url.pathname === "/faces/search") {
+    const who = url.searchParams.get("who") || "";
+    const limit = Number(url.searchParams.get("limit") || 50);
+    const matches = searchFaceMatches({ who, limit });
+    return send(res, 200, { ok: true, matches });
   }
 
   if (req.method === "GET" && url.pathname === "/clips/search") {
