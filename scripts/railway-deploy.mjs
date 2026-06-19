@@ -143,6 +143,7 @@ async function main() {
     CLOUD_WATCH_ENABLED: "1",
     CLOUD_WATCH_INTERVAL_MS: "30000",
     CLOUD_WATCH_ARCHIVE: "1",
+    STRANGER_ALERT_ENABLED: "1",
   };
   if ((process.env.OPENAI_API_KEY || "").trim()) {
     vars.OPENAI_API_KEY = process.env.OPENAI_API_KEY.trim();

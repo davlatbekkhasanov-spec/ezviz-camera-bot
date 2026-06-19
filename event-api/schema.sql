@@ -98,3 +98,18 @@ CREATE TABLE IF NOT EXISTS staff_faces (
   enrolled_at TEXT NOT NULL,
   active INTEGER NOT NULL DEFAULT 1
 );
+
+CREATE TABLE IF NOT EXISTS pending_strangers (
+  id TEXT PRIMARY KEY,
+  at TEXT NOT NULL,
+  zone TEXT NOT NULL DEFAULT '',
+  camera_id TEXT NOT NULL DEFAULT '',
+  photo_path TEXT NOT NULL DEFAULT '',
+  face_hash TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'pending',
+  staff_name TEXT NOT NULL DEFAULT '',
+  note TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_pending_strangers_status ON pending_strangers(status);
